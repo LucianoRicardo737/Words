@@ -11,8 +11,16 @@
     height:100vh;
     box-sizing: border-box;
     font-size: 5em;
+    transition: 0.1s;
+  
 }
 .darkMode {
     background-color: black !important;
     color: white;
+    transition: 0.1s;
+}
+
+.effect{
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
 }

@@ -25,7 +25,16 @@ const Home = () => {
 
   const changeTheme = () => {
     let $ = (selector: String) => document.querySelector(`.${selector}`)
+
+    
+    $('styleDiv')?.classList.toggle('effect')
+    setTimeout(() => {
+      $('styleDiv')?.classList.toggle('effect')
+    }, 100);
+
     $('styleDiv')?.classList.toggle('darkMode')
+    $('modeButton')?.classList.toggle('modeButtonDark')
+
     darkMode ? setDarkMode(false) : setDarkMode(true)
   } 
   const welcomeHome = () => { 
@@ -71,7 +80,7 @@ const ShowWord = (index: number) => {
   return (
     <section className='sectionDiv'>
        <div className='divButton'>
-        <button onClick={()=>{changeTheme()}} className='darkModeButton'>{darkMode===true ?  'Change to WhiteMode' : 'Change to DarkMode'  }</button>
+        <button onClick={()=>{changeTheme()}} className='modeButton'>{darkMode===true ?  'Change to WhiteMode' : 'Change to DarkMode'  }</button>
       </div>
       <div className='divCont'>
         {welcomeHome()}

@@ -70,14 +70,19 @@
     margin-top: -0.1em;
     justify-content: center;
 }
-.darkModeButton{
+.modeButton{
     background-color: none;
     border: none;
     background: none;
-    color: #cd4040d3;
     cursor: pointer;
-
+    color: #6555559f
 }
+.modeButtonDark{
+    color: white !important;
+}
+
+
+
 @media (max-width: 760px){
     .divCont{
         font-size: 0.8em;
