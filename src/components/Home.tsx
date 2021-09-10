@@ -44,7 +44,7 @@ const Home = () => {
 
   function component(res : String ,index: number){
     return (
-    <section className='sectionWords'>
+    <section  key={index} className='sectionWords'>
       <button className={`buttonWord class${index}`} onClick={(e)=>{getData(e)}} id={index.toString()} >
         {index===0 ? res.toUpperCase() : res}
       </button>
@@ -52,16 +52,21 @@ const Home = () => {
     )
   }
 
-  function styling(res : String ,index: number){
-    switch (index) {
-      case index:
-        return component(res, index)
-      default: return res
-    }
-  }
-  return myMsj.split('').map((res,index)=>{
-    return styling(res, index)
+  const components = myMsj.split('').map((res,index)=>{
+    return component(res, index)
   })
+
+  return (
+    <>
+    <div className='welcome'>
+      {components.slice(0,7).map(res=>{return res})}
+    </div>
+    <div className='home'>
+      {components.slice(7,11).map(res=>{return res})}
+    </div>
+    </>
+  )
+
 }
 
 const ShowWord = (index: number) => {
