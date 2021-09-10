@@ -1,7 +1,6 @@
 .sectionDiv{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     width: 100%;
     border-radius: 5px;
     box-sizing: border-box;
@@ -17,9 +16,7 @@
     flex-direction: row;
     color: #cd4040d3;
     box-sizing: border-box;
-    flex-wrap: wrap;
     width: 100%;
-    overflow: hidden;
     justify-content: center;
 
 }
@@ -29,8 +26,6 @@
     box-sizing: border-box;
     margin-top: -0.1em;
     justify-content: center;
-
-
 }
 .sectionWords{
   display: flex;
@@ -60,9 +55,9 @@
     text-align: left;
     font-family:  monospace;
 }
-.class7{
+/* .class7{
  margin-left:0.2em ;   
-}
+} */
 .divButton{
     display:flex;
     flex-direction: row;
@@ -80,7 +75,15 @@
 .modeButtonDark{
     color: white !important;
 }
-
+.welcome{
+    display:flex;
+    flex-direction: row;
+}
+.home{
+    margin-left: 0.2em;
+    display:flex;
+    flex-direction: row;
+}
 
 
 @media (max-width: 760px){
@@ -89,6 +92,14 @@
     }
     .divWords{
         font-size: 0.6em;
+    }
+}
+@media (max-width: 500px){
+    .welcome{
+      margin-top: 0.2em;
+    }
+    .divCont{    
+      flex-wrap: wrap;
     }
 }*{
     margin:0;

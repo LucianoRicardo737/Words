@@ -41,7 +41,7 @@ const p = function polyfill() {
   }
 };
 p();
-var home = ".sectionDiv{\n    display: flex;\n    flex-direction: column;\n    flex-wrap: wrap;\n    width: 100%;\n    border-radius: 5px;\n    box-sizing: border-box;\n    align-items: center;\n    justify-content: space-between;\n    height: 90vh;\n    padding-top: 2em;\n    padding-bottom: 2em;\n\n}\n.divCont{    \n    display:flex;\n    flex-direction: row;\n    color: #cd4040d3;\n    box-sizing: border-box;\n    flex-wrap: wrap;\n    width: 100%;\n    overflow: hidden;\n    justify-content: center;\n\n}\n.divWords{\n    display:flex;\n    flex-direction: row;\n    box-sizing: border-box;\n    margin-top: -0.1em;\n    justify-content: center;\n\n\n}\n.sectionWords{\n  display: flex;\n  flex-direction: column;\n}\n.buttonWord{\n    font-family:  monospace;\n    border: none;\n    width: auto;\n    color: #cd4040d3;\n    height: auto;\n    font-size: 0.9em;\n    background: none;\n    cursor: pointer;\n    margin: auto;\n    user-select:none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -khtml-user-select: none;\n    -ms-user-select:none;\n    font-size: 1.5em;\n}\n.buttonWord:hover{\n    color: #6555559f;\n}\n.word{  \n    text-align: left;\n    font-family:  monospace;\n}\n.class7{\n margin-left:0.2em ;   \n}\n.divButton{\n    display:flex;\n    flex-direction: row;\n    box-sizing: border-box;\n    margin-top: -0.1em;\n    justify-content: center;\n}\n.modeButton{\n    background-color: none;\n    border: none;\n    background: none;\n    cursor: pointer;\n    color: #655555d6\n}\n.modeButtonDark{\n    color: white !important;\n}\n\n\n\n@media (max-width: 760px){\n    .divCont{\n        font-size: 0.8em;\n    }\n    .divWords{\n        font-size: 0.6em;\n    }\n}";
+var home = ".sectionDiv{\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n    border-radius: 5px;\n    box-sizing: border-box;\n    align-items: center;\n    justify-content: space-between;\n    height: 90vh;\n    padding-top: 2em;\n    padding-bottom: 2em;\n\n}\n.divCont{    \n    display:flex;\n    flex-direction: row;\n    color: #cd4040d3;\n    box-sizing: border-box;\n    width: 100%;\n    justify-content: center;\n\n}\n.divWords{\n    display:flex;\n    flex-direction: row;\n    box-sizing: border-box;\n    margin-top: -0.1em;\n    justify-content: center;\n}\n.sectionWords{\n  display: flex;\n  flex-direction: column;\n}\n.buttonWord{\n    font-family:  monospace;\n    border: none;\n    width: auto;\n    color: #cd4040d3;\n    height: auto;\n    font-size: 0.9em;\n    background: none;\n    cursor: pointer;\n    margin: auto;\n    user-select:none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -khtml-user-select: none;\n    -ms-user-select:none;\n    font-size: 1.5em;\n}\n.buttonWord:hover{\n    color: #6555559f;\n}\n.word{  \n    text-align: left;\n    font-family:  monospace;\n}\n/* .class7{\n margin-left:0.2em ;   \n} */\n.divButton{\n    display:flex;\n    flex-direction: row;\n    box-sizing: border-box;\n    margin-top: -0.1em;\n    justify-content: center;\n}\n.modeButton{\n    background-color: none;\n    border: none;\n    background: none;\n    cursor: pointer;\n    color: #655555d6\n}\n.modeButtonDark{\n    color: white !important;\n}\n.welcome{\n    display:flex;\n    flex-direction: row;\n}\n.home{\n    margin-left: 0.2em;\n    display:flex;\n    flex-direction: row;\n}\n\n\n@media (max-width: 760px){\n    .divCont{\n        font-size: 0.8em;\n    }\n    .divWords{\n        font-size: 0.6em;\n    }\n}\n@media (max-width: 500px){\n    .welcome{\n      margin-top: 0.2em;\n    }\n    .divCont{    \n      flex-wrap: wrap;\n    }\n}";
 const Home = () => {
   const [indexWord, setIndexWord] = react.exports.useState(0);
   const [darkMode, setDarkMode] = react.exports.useState(false);
@@ -77,6 +77,7 @@ const Home = () => {
     }
     function component(res, index) {
       return /* @__PURE__ */ React.createElement("section", {
+        key: index,
         className: "sectionWords"
       }, /* @__PURE__ */ React.createElement("button", {
         className: `buttonWord class${index}`,
@@ -86,17 +87,18 @@ const Home = () => {
         id: index.toString()
       }, index === 0 ? res.toUpperCase() : res));
     }
-    function styling(res, index) {
-      switch (index) {
-        case index:
-          return component(res, index);
-        default:
-          return res;
-      }
-    }
-    return myMsj.split("").map((res, index) => {
-      return styling(res, index);
+    const components = myMsj.split("").map((res, index) => {
+      return component(res, index);
     });
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", {
+      className: "welcome"
+    }, components.slice(0, 7).map((res) => {
+      return res;
+    })), /* @__PURE__ */ React.createElement("div", {
+      className: "home"
+    }, components.slice(7, 11).map((res) => {
+      return res;
+    })));
   };
   const ShowWord = (index) => {
     let word = data[index].slice(0, 1).toUpperCase() + data[index].slice(1);
