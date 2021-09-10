@@ -4,4 +4,10 @@ import reactRefresh from "@vitejs/plugin-react-refresh";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [reactRefresh()],
+  build: {
+    minify: false,
+  },
+  esbuild: {
+    jsxInject: `import React from 'react'`,
+  },
 });
